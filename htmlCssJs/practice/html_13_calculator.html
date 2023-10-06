@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+  </head>
+  <body>
+    <form style="width: 150px; height: 150px">
+      <div>
+        값1 : <input type="number" id="num1" />
+        <br />
+        값2 : <input type="number" id="num2" />
+        <br />
+        연산자 : <input type="text" id="operation" />
+        <br />
+        결과 : <input type="text" id="result" readonly />
+        <br />
+        <button type="button" onclick="calculator()">Calculator</button>
+        <!-- reset ver1(js에서도같이코드작성) -->
+        <!-- <button type="button" onclick="resetCalc()">ReSet</button> -->
+        <!-- reset ver2(html에서만코드작성) -->
+        <input type="reset" value="ReSet" />
+      </form>
+    </div>
+    <script src="./JS_13_calculator.js"></script>
+  </body>
+</html>
