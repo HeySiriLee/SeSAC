@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML CLASS CODE</title>
+    <!--문서의 제목-->
+  </head>
+
+  <body>
+    <!--블록 요소-->
+    <h1>h1은 제목을 나타내요. 페이지마다 하나씩 씁시다.</h1>
+    <h2>h2는 소제목이에요. 독립적인 콘텐츠마다 하나씩 써주세요.</h2>
+    <h3>h3~h6도 있어요. 숫자가 클수록 중요도가 낮아지고, 크기가 작아져요.</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+
+    <div>div는 본문 내용을 쓸 때 사용해요.</div>
+    <div>p태그와 여백이 달라요.</div>
+
+    <p>p는 본문 내용을 쓸 때 사용해요.</p>
+    <p>div와 여백이 달라요.</p>
+
+    <ol>
+      <!--start, reverse 속성도 있다-->
+      <li>나는 순서가 있는 리스트를 만들 때 사용해요.</li>
+      <li>순서가 보이죠?</li>
+    </ol>
+
+    <ul type="circle">
+      <li>나는 순서가 없는 리스트를 만들 때 사용해요.</li>
+      <li>순서가 없이 불렛으로 표현됩니다.</li>
+    </ul>
+
+    <!--줄바꿈-->
+    <br />
+    <!--밑줄긋기-->
+    <hr />
+    <!--줄바꿈-->
+    <br />
+
+    <!--인라인 요소-->
+    <span></span>
+    <strong></strong>
+    <a href="연결할 주소" target="연결 방식">링크를 만들 때 사용합니다.</a>
+    <br />
+    이미지를 삽입할 때 사용해요:
+    <br />
+    <img
+      src="이미지링크"
+      alt="이미지가 안 나올 때 대신 띄울 title"
+      width="가로사이즈"
+      height="세로사이즈"
+      title="hover했을때 띄울 title"
+    />
+
+    <br />
+    <br />
+    <hr />
+    <br />
+
+    <form>
+      form은 form 안의 값을 하나로 묶어서 표현됩니다. 입력값을 쓸 수 있게
+      해줘요:
+      <br />
+      <input type="text" name="name" />
+      <br />
+      <button>버튼이예요.클릭클릭!</button>
+      <br />
+      <input type="checkbox" name="" value="" />checkbox는 BE로 데이터를 넘기기
+      위해 name 통일화되는게 좋아요. 그 중에 분리되기 위해서는 value를 쓰는게
+      좋아요.
+      <br />
+      <input type="radio" name="" value="" />radio는 checkbox와 달리 name의
+      여러개 중에 하나만 선택할 수 있어요. 값을 지정해주기 위해 value를 쓰는게
+      좋아요.
+    </form>
+
+    <select name="select_option">
+      <option>선택해주세요</option>
+      <optgroup label="option_ver1">
+        <option value="option_01">option1</option>
+        <option value="option_02">option2</option>
+      </optgroup>
+      <optgroup label="option_ver2">
+        <option value="option_03">option3</option>
+        <option value="option_04">option4</option>
+        <option value="option_05">option05</option>
+      </optgroup>
+    </select>
+
+    <br />
+    <br />
+    <hr />
+    <br />
+
+    <!--테이블만들기-->
+    <table>
+      <thead>
+        <tr>
+          <th>뭐</th>
+          <th>먹</th>
+          <th>고</th>
+          <th>싶</th>
+          <th>어</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>배</td>
+          <td>가</td>
+          <td>고</td>
+          <td>파</td>
+          <td>요</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>뭘</td>
+          <td>먹</td>
+          <td>을</td>
+          <td>까</td>
+          <td>요</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+
+    <!--Bold체 굵기-->
+    <b>b는 꾸미기용 굻은체</b>
+    <strong>strong은 시멘틱한 굵은체</strong>
+    <del>del은 delete line</del>
+    <u>u는 under line</u>
+
+    <br />
+    <br />
+    <hr />
+  </body>
+</html>

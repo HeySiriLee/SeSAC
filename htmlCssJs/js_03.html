@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS_DOM CLASS CODE</title>
+  </head>
+  <body>
+    <div id="box" class="box">안녕박스야</div>
+    <br />
+    <div id="container" class="box item">안녕컨테이너야</div>
+    <br />
+    <span>안녕스팬아</span>
+    <br />
+    <br />
+    <input type="text" name="email" />
+    <br />
+    <br />
+    <div id="box2"><b>안녕박스2야</b>안녕박스22야</div>
+
+    <script>
+      let elById = document.getElementById("box");
+      console.log(elById);
+
+      let elByClass = document.getElementsByClassName("box");
+      console.log(elByClass[0]);
+
+      let elByTag = document.getElementsByTagName("span");
+      console.log(elByTag);
+
+      let elByName = document.getElementsByName("email");
+      console.log(elByName);
+
+      // 선택자를 이용하여 요소를 선택
+      let elBySelector = document.querySelector(".box");
+      let elBySelectorAll = document.querySelectorAll(".box");
+      console.log(elBySelector);
+      console.log(elBySelectorAll);
+
+      let elBox2 = document.querySelector("#box2");
+      console.log(elBox2);
+      console.log(elBox2.innerText);
+      console.log(elBox2.innerHTML);
+
+      elBox2.innerText = "안녕안녕박스2야";
+      elBox2.innerHTML = "안녕안녕<b>박스2야</b>";
+    </script>
+  </body>
+</html>
