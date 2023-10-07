@@ -28,21 +28,25 @@ nav {
 
 .menu a {
   width: 100%;
-  height: 70px;
+  height: 20px;
   padding: 7px 5px;
   border-radius: 10px;
   background-color: #894426;
   color: white;
+  justify-content: center;
   text-decoration: none;
   text-align: center;
+  line-height: 20px;
   font-size: 17px;
-  line-height: 100%;
 }
 
 /* 미디어 쿼리 적용 */
 @media screen and (max-width: 768px) {
   header {
     height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .menu {
@@ -56,6 +60,10 @@ nav {
   }
 
   .menu li {
+    margin: 0;
+  }
+
+  .menu a {
     margin: 0;
   }
 
