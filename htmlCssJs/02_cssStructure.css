@@ -1,0 +1,112 @@
+div {
+  color: black;
+}
+
+/* 단일 선택자 */
+* {
+  background-color: whitesmoke;
+}
+p {
+  background-color: white;
+}
+.class {
+  background-color: rgb(245, 245, 220);
+}
+#id {
+  background-color: rgb(245, 245, 220);
+}
+
+/* 가상 선택자 */
+.span-hover:hover {
+  background-color: gold;
+}
+.span-active:active {
+  background-color: gold;
+}
+.input-focus:focus {
+  background-color: gold;
+}
+a:visited {
+  color: gold;
+}
+/* class가 number인 첫번째 자식이 ul 태그일 경우 gold로 color를 바꿈 */
+.number ul:first-child {
+  color: gold;
+}
+/* class가 number인 세번째 자식이 span 태그일 경우 gold로 color를 바꿈 */
+.number span:nth-child(3) {
+  color: orange;
+}
+
+/* 가상 요소 선택자 */
+div.before-el::before {
+  content: "front!!";
+}
+div.after-el::after {
+  content: "back!!";
+}
+
+/* 속성 선택자 */
+input[type="password"] {
+  background-color: gray;
+}
+
+/* 자주 쓰이는 속성 */
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-css {
+  font-size: 16px;
+  font-weight: 900;
+  font-family: "S-CoreDream-3Light", "sans-selif";
+}
+
+.width-css {
+  color: white;
+  background-color: lightgray;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.border-css {
+  border: 1px;
+  border-style: dashed;
+  border-color: gray;
+  border-radius: 5px;
+}
+
+.circle {
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.margin-css {
+  margin: 10px 20px 30px 40px;
+  border: 2px solid black;
+  background-color: gray;
+  color: black;
+}
+
+.padding-css {
+  padding: 40px 30px 20px 10%;
+  border: 2px solid black;
+  background-color: lightgray;
+  color: black;
+}
+
+.box-css {
+  background-color: gray;
+  box-sizing: content-box;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+}
