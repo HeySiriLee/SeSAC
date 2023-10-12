@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.ejs</title>
+    <link rel="stylesheet" href="public/css/index.css" />
+  </head>
+  <body>
+    <div class="box">hello ejs!</div>
+    <br />
+    <!-- ejs tag =: 뒤에 있는 variable or html을 노출 -->
+    <!-- ejs tag -: 뒤에 있는 variable or html을 노출(tag를 인식함) -->
+    <%="Example1" %><br />
+    <%=product %><br />
+    <%="Example2" %><br />
+    <% for(let i=0; i < product.length; i++) { %>
+    <div>item <%=product[i] %></div>
+    <%}%><br />
+    <%="change ejs > html" %>
+  </body>
+</html>
