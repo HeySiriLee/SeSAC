@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>changeImg</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="fruitImageContainer" style="text-align: center">
+      <img
+        style="width: 500px; height: 500px"
+        alt="과일 이미지"
+        id="fruitImage"
+      />
+      <br />
+      <div class="buttonSeries">
+        <button id="appleBtn">사과</button>
+        <button id="cherryBtn">체리</button>
+        <button id="orangeBtn">오렌지</button>
+        <button id="strawberryBtn">딸기</button>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#appleBtn").click(function () {
+          $("#fruitImage").attr(
+            "src",
+            "https://cdn.pixabay.com/photo/2015/02/13/00/43/apples-634572_1280.jpg"
+          );
+        });
+
+        $("#cherryBtn").click(function () {
+          $("#fruitImage").attr(
+            "src",
+            "https://cdn.pixabay.com/photo/2016/06/18/22/36/cherries-1465801_1280.jpg"
+          );
+        });
+
+        $("#orangeBtn").click(function () {
+          $("#fruitImage").attr(
+            "src",
+            "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_1280.jpg"
+          );
+        });
+
+        $("#strawberryBtn").click(function () {
+          $("#fruitImage").attr(
+            "src",
+            "https://cdn.pixabay.com/photo/2018/04/29/11/54/strawberries-3359755_1280.jpg"
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

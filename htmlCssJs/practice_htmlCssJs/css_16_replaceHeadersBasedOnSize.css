@@ -1,0 +1,75 @@
+/* 기본 스타일 */
+header {
+  height: 100px;
+  background-color: #bab1a4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+a {
+  display: inline-block;
+}
+nav {
+  display: inline-block;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  margin-right: 10px;
+}
+
+.menu li {
+  margin-right: 30px;
+}
+
+.menu a {
+  width: 100%;
+  height: 20px;
+  padding: 7px 5px;
+  border-radius: 10px;
+  background-color: #894426;
+  color: white;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  line-height: 20px;
+  font-size: 17px;
+}
+
+/* 미디어 쿼리 적용 */
+@media screen and (max-width: 768px) {
+  header {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu {
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .menu li {
+    margin: 0;
+  }
+
+  .menu a {
+    margin: 0;
+  }
+
+  @media screen and (max-height: 768px) {
+    header {
+      height: 60px;
+    }
+  }
+}
