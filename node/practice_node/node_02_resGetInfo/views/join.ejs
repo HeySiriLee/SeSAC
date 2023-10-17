@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/post" method="post">
+      <fieldset>
+        <legend>Personal Info</legend>
+        <input type="text" name="name" placeholder="Enter your name" />
+
+        <br />
+
+        <div id="info_birth">
+          <select name="info_birth" id="info_DD">
+            <option disabled selected value="info_DD">Day</option>
+          </select>
+          <select name="info_birth" id="info_MM">
+            <option disabled selected value="info_MM">Month</option>
+          </select>
+          <select name="info_birth" id="info_YY">
+            <option disabled selected value="info_YY">Year</option>
+          </select>
+        </div>
+
+        <input type="text" name="email" placeholder="Enter your Email" />
+
+        <br />
+
+        <input type="radio" name="gender" id="m" value="m" /><label for="m">men</label>
+        <input type="radio" name="gender" id="w" value="w" /><label for="w">women</label>
+        <input type="radio" name="gender" id="w" value="?" /><label for="?">alien</label>
+
+        <br />
+      </fieldset>
+      <fieldset>
+        <legend>Login Info</legend>
+        <input type="text" name="id" placeholder="Enter your ID" />
+
+        <br />
+
+        <input type="password" name="pw" placeholder="Enter your password" />
+
+        <br />
+      </fieldset>
+      <button type="submit">JOIN</button>
+  </body>
+</html>
