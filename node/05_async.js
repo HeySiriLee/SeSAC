@@ -137,7 +137,7 @@ function add2(n1, n2) {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
       let result2 = n1 + n2;
-      resolve(result4);
+      resolve(result2);
     }, 3000);
   });
 }
@@ -145,7 +145,7 @@ function mul2(n) {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
       let result2 = n * 2;
-      resolve(result5);
+      resolve(result2);
     }, 3250);
   });
 }
@@ -153,7 +153,7 @@ function sub2(n) {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
       let result2 = n - 1;
-      resolve(result6);
+      resolve(result2);
     }, 3500);
   });
 }
