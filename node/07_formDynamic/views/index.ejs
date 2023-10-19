@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적 폼 전송</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="register">
+      <input type="text" name="id" placeholder="ID" required />
+      <br />
+      <input type="password" name="pw" placeholder="password" required />
+      <br />
+      <input type="text" name="name" placeholder="Name" />
+      <br />
+
+      <button type="button" onclick="ajaxGet()">ajax get 전송</button>
+      <button type="button" onclick="ajaxPost()">ajax post 전송</button>
+      <br />
+      <button type="button" onclick="axiosGet()">axios get 전송</button>
+      <button type="button" onclick="axiosPost()">axios post 전송</button>
+      <br />
+      <button type="button" onclick="fetchGet()">fetch get 전송</button>
+      <button type="button" onclick="fetchPost()">fetch post 전송</button>
+    </form>
+
+    <h4 id="result"></h4>
+
+    <script>
+      function getData() {
+        const form = document.forms["register"];
+
+        // checkValidity: 폼의 유효성 검사를 해서 Boolean 값 반환
+        if (!form.checkValidity()) {
+          // reportValidity: 유효성 검사를 통과하지 못 한 input에 대해 반환
+          form.reportValidity();
+          return false;
+        }
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+          name: form.name.value,
+        }
+
+        return data
+      }
+
+      function ajaxGet() {
+        const form = document.forms["register"];
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+          name: form.name.value,
+        }
+        if (!data) return;
+        $.ajax({
+          type: "GET", // 폼 속성 중 Method
+          //   url: "/ajax", // 폼 속성 중 Method
+          //   data: data,
+          url: `/ajax?id=${data.id}&pw=${data.pw}&name=${data.name}`,
+          success: function(result) {
+            // 응답을 성공적으로 받았을 경우의 이벤트 핸들러
+            // 매개변수에 응답이 들어옴
+            console.log(result);
+            const {
+              name
+            } = result;
+            $("#result").html(`Success request ajax get ${name}님 환영합니다!`)
+          }
+        })
+      }
+
+      function ajaxPost() {
+        const data = getData();
+        if (!data) return;
+        $.ajax({
+          type: "POST",
+          url: "/ajax",
+          data: data,
+          success: function(result) {
+            console.log(result);
+            $("#result").html(`Success request ajax post ${result.name}님 환영합니다!`)
+          }
+        })
+      }
+
+      function axiosGet() {
+        const data = getData()
+        if (!data) return;
+        //  axios 함수는 promise 객체를 return
+        axios({
+          method: "GET",
+          url: "/axios",
+          params: data // get 요청으로 데이터를 보냄
+          // params 대신 url에 query를 직접 작성해도 됌
+        }).then((res) => {
+          // Server에서 보내준 응답이 res에 담김
+          console.log("res: ", res);
+          console.log("res.data: ", res.data);
+          const {
+            name
+          } = res.data
+
+          $("#result").html(`Success request axios get ${name}님 환영합니다!`)
+        })
+      }
+
+      async function axiosPost() {
+        const data = getData();
+        if (!data) return;
+
+        const res = await axios({
+          method: "POST",
+          url: "/axios",
+          data: data,
+        })
+        console.log("res: ", res);
+        console.log("res.data: ", res.data);
+        $("#result").html(`Success request axios post ${res.data.name}님 환영합니다!`)
+      }
+
+      async function fetchGet() {
+        const data = getData();
+        if (!data) return;
+
+        // fetch(url, option object)
+        // url -> action
+        // option object에 method가 있음
+        // fetch는 method 기본값 get
+        // fetch는 data를 get 요청 시 데이터를 query로 만들어서 url과 함께 전송
+        // const urlQuery = `id=${data.id}&pw=${data.pw}&name=${data.name}`
+        const urlQuery = new URLSearchParams(data).toString() // 위에랑 동일 코드
+
+        // // 방법1 (then chaining)
+        // fetch(`/fetch?${urlQuery}`, {
+        //   method: "GET"
+        // }).then((res) => {
+        //   console.log("origin: ", res);
+        //   return res.json();
+        // }).then((res) => {
+        //   console.log("parse: ", res)
+        // })
+
+        // // 방법2
+        // fetch(`/fecth?${urlQuery}`).then(async (res) => 
+        // {
+        //     console.log("origin: ", res);
+        //     console.log("parse: ", await res.json());
+        // })
+
+        // 방법3
+        const oriRes = await fetch(`/fetch?${urlQuery}`)
+        const parsRes = await oriRes.json();
+        console.log(parsRes)
+      }
+
+      function fetchPost() {
+        const data = getData()
+        if (!data) return;
+
+        // 원래는 content-type 기본값 사용
+        // fetch post 요청 시에는 기본값을 사용하면 동작X
+        // 따라서 content-type 을  application/json 형태로 변경
+        fetch("/fetch", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then((res) => {
+          return res.json
+        }).then((res) => {
+          console.log(res);
+          $("#result").html(`Success request fetch post ${res.name}님 환영합니다!`)
+        })
+      }
+    </script>
+  </body>
+</html>
