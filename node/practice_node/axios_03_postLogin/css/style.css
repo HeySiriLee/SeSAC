@@ -1,0 +1,16 @@
+/* index.ejs */
+#login_page {
+  position: relative;
+  text-align: center;
+}
+
+#form {
+  position: relative;
+  text-align: center;
+}
+
+#join_title {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+}

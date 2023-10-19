@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postLoginEjs</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form action="/get" method="get" target="_blank" name="login">
+      <input type="text" name="loginId" placeholder="Enter your ID" />
+      <br />
+      <input type="password" name="loginPw" placeholder="Enter your password" />
+      <br />
+      <button type="button" onclick="login()">LOGIN</button>
+      <a href="/join"><button type="button">JOIN</button></a>
+    </form>
+
+    <script>
+      function getData() {
+        const form = document.forms["index"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return false;
+        }
+
+        const data = {
+          id: form.loginId.value,
+          pw: form.loginPw.value,
+        };
+
+        return data;
+      }
+
+      async function login() {
+        const data = getData();
+        if (!data) return;
+
+        const res = await axios({
+          method: "POST",
+          url: "/login",
+          params: data,
+        });
+
+        if (res.data == true) {
+          $("#loginResult").html("Success Login!").css({ color: "blue" });
+        } else {
+          $("#loginResult").html("Failed Login!").css({ color: "red" });
+        }
+        console.log(res);
+      }
+    </script>
+  </body>
+</html>

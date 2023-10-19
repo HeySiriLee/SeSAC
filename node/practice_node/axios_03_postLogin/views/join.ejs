@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>joinEjs</title>
+    <title>postLoginEjs</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
@@ -44,7 +52,7 @@
             <input type="radio" name="gender" id="w" value="w" /><label for="w"
               >women</label
             >
-            <input type="radio" name="gender" id="w" value="?" /><label for="?"
+            <input type="radio" name="gender" id="?" value="?" /><label for="?"
               >alien</label
             >
           </div>
@@ -61,8 +69,44 @@
 
           <br />
         </fieldset>
-        <button type="submit">JOIN</button>
+        <button type="button" onclick="join()">JOIN</button>
       </form>
     </div>
+
+    <script>
+      function getData() {
+        const form = document.forms["register"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return false;
+        }
+
+        const data = {
+          name: form.name.value,
+          birth: form.birth.value,
+          email: form.email.value,
+          gender: form.gender.value,
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        return data;
+      }
+      function join() {
+        const data = getData();
+        if (!data) return;
+        axios({
+          method: "GET",
+          url: "/axios",
+          params: data,
+        }).then((res) => {
+          const { name } = res.data;
+          $("#info_all").html(
+            `Success request axios get ${name}님 환영합니다!`
+          );
+        });
+      }
+    </script>
   </body>
 </html>
