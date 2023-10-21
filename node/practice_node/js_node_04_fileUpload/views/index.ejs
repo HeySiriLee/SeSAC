@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>fileUpload</title>
+  </head>
+  <body>
+    <h5 style="margin-bottom: 0;">Simple join page</h5>
+    <form action="/join" method="POST" enctype="multipart/form-data" name="profile_img">
+      <br />
+      <input type="text" name="userId" placeholder="Enter u r Id" required />
+      <br />
+      <input type="password" name="userPw" placeholder="Enter u r Pw" required />
+      <br />
+      <input type="text" name="name" placeholder="Enter u r name" required />
+      <br />
+      <input type="text" name="nickName" placeholder="Enter u r nickname" required />
+      <br />
+      <input type="file" name="profile_img" />
+      <br />
+      <br />
+      <button type="submit">Join1</button>
+      <button type="button" onclick="clickjoin2()">Join2</button>
+      <br />
+    </form>
+    <div id="join2"></div>
+    <script>
+      function clickjoin2() {
+        const form = document.forms["profile_img"];
+        const formData = new FormData();
+        formData.append("userId", form.userId.value);
+        formData.append("userPw", form.userPw.value);
+        formData.append("name", form.name.value);
+        formData.append("nickName", form.nickName.value);
+        formData.append("profile_img", form.profile_img.files[0])
+
+        axios({
+          method: "POST",
+          url: "/join2",
+          data: formData,
+          headers: {
+            "Content-type": "multipart/form-data"
+          }
+        }).then((res) => {
+          console.log(res.data)
+          const result = document.getElementById("join2")
+          result.innerHTML =
+            `<h4>Welcome:D, ${res.data.userId}!</h4>
+          <img src="/${res.data.src}" width="240px" height="300px"
+          <div>
+        <p> Password: ${res.data.userPw}</p>
+        <p> Name: ${res.data.name}</p>
+        <p> NickName: ${res.data.nickName}</p> 
+        </div>
+        `
+        })
+      }
+    </script>
+  </body>
+</html>
