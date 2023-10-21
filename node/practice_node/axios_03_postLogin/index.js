@@ -16,7 +16,7 @@ app.post("/login", (req, res) => {
   const pw = "0902";
 
   function loginResult() {
-    if (req.body.id == id && req.body.pw == pw) {
+    if (req.body.userid == id && req.body.userpw == pw) {
       return true;
     } else {
       return false;

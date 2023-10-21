@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>postLoginEjs</title>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -18,13 +14,14 @@
       <br />
       <input type="password" name="loginPw" placeholder="Enter your password" />
       <br />
-      <button type="button" onclick="login()">LOGIN</button>
+      <button type="button" onclick="login2()">LOGIN</button>
       <a href="/join"><button type="button">JOIN</button></a>
     </form>
+    <div id="loginResult"></div>
 
     <script>
       function getData() {
-        const form = document.forms["index"];
+        const form = document.forms["login"];
 
         if (!form.checkValidity()) {
           form.reportValidity();
@@ -39,7 +36,7 @@
         return data;
       }
 
-      async function login() {
+      async function login2() {
         const data = getData();
         if (!data) return;
 
@@ -50,9 +47,13 @@
         });
 
         if (res.data == true) {
-          $("#loginResult").html("Success Login!").css({ color: "blue" });
+          $("#loginResult").html("Success Login!").css({
+            color: "blue"
+          });
         } else {
-          $("#loginResult").html("Failed Login!").css({ color: "red" });
+          $("#loginResult").html("Failed Login!").css({
+            color: "red"
+          });
         }
         console.log(res);
       }

@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>postLoginEjs</title>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="../css/style.css" />
@@ -17,12 +13,7 @@
   <body>
     <div id="form">
       <h3 id="join_title">회 원 가 입</h3>
-      <form
-        id="info_all"
-        style="text-align: center"
-        action="/post"
-        method="post"
-      >
+      <form id="info_all" style="text-align: center" action="/post" method="post">
         <fieldset>
           <legend>Personal Info</legend>
           <input type="text" name="name" placeholder="Enter your name" />
@@ -46,15 +37,9 @@
           <br />
 
           <div id="info_gender">
-            <input type="radio" name="gender" id="m" value="m" /><label for="m"
-              >men</label
-            >
-            <input type="radio" name="gender" id="w" value="w" /><label for="w"
-              >women</label
-            >
-            <input type="radio" name="gender" id="?" value="?" /><label for="?"
-              >alien</label
-            >
+            <input type="radio" name="gender" id="male" value="male" /><label for="m">men</label>
+            <input type="radio" name="gender" id="female" value="female" /><label for="w">women</label>
+            <input type="radio" name="gender" id="?" value="?" /><label for="?">alien</label>
           </div>
 
           <br />
@@ -69,13 +54,13 @@
 
           <br />
         </fieldset>
-        <button type="button" onclick="join()">JOIN</button>
+        <button type="button" onclick="clickJoin()">JOIN</button>
       </form>
     </div>
 
     <script>
       function getData() {
-        const form = document.forms["register"];
+        const form = document.forms["join"];
 
         if (!form.checkValidity()) {
           form.reportValidity();
@@ -93,7 +78,8 @@
 
         return data;
       }
-      function join() {
+
+      function clickJoin() {
         const data = getData();
         if (!data) return;
         axios({
@@ -101,7 +87,9 @@
           url: "/axios",
           params: data,
         }).then((res) => {
-          const { name } = res.data;
+          const {
+            name
+          } = res.data;
           $("#info_all").html(
             `Success request axios get ${name}님 환영합니다!`
           );
