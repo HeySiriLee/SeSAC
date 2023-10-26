@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comments</title>
+  </head>
+  <body>
+    <h3>Comment Collection</h3>
+    <a href="/">Go to Home</a>
+    <ul>
+      <% for (let i = 0; i < commentInfos.length; i++) { %>
+      <li>
+        <b><%= commentInfos[i].userId %></b> -
+        <a><%= commentInfos[i].comment %></a>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
