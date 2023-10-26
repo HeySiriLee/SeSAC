@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mvcVer1</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h3> My Info </h3>
+    <form name="register">
+      <fieldset>
+        <legend>BASIC_INFO</legend>
+        <label for="username">NAME</label>
+        <br />
+        <input type="text" name="userName" id="userName" required />
+        <br />
+        <label for="nickName">NICKNAME</label>
+        <br />
+        <input type="text" name="nickName" id="nickName" />
+        <br />
+        <br />
+        <legend>BIRTH</legend>
+        <label for="year">Year: </label>
+        <select name="birthYear" id="year">
+          <% for (let i = 0; i < 50; i++) { %>
+          <option value="<%= 2010 - i %>"><%= 2010 - i %></option>
+          <% } %>
+        </select>
+        <label for="month">Month: </label>
+        <select name="birthMonth" id="month">
+          <% for (let i = 1; i < 13; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="day">Day: </label>
+        <select name="birthDay" id="day">
+          <% for (let i = 1; i < 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <br />
+        <br />
+        <legend>GENDER</legend>
+        <input type="radio" name="gender" id="alien" value="alien" />
+        <label for="alien">외계인</label>
+        <input type="radio" name="gender" id="male" value="male" checked />
+        <label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="female">여자</label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>ADDITIONAL_INFO_interest</legend>
+        <input type="checkbox" name="interest" id="travle" value="travle" checked />
+        <label for="travle">Travel</label>
+        <input type="checkbox" name="interest" id="fashion" value="fashion" />
+        <label for="fashion">Fashion</label>
+        <input type="checkbox" name="interest" id="cook" value="cook" />
+        <label for="cook">Cook</label>
+      </fieldset>
+
+      <br />
+
+      <button type="button" onclick="clickRegister();">Edit</button>
+      <a href="/">Go back Login Page!</a>
+    </form>
+    <br />
+    <div class="register-result"></div>
+
+    <script>
+      function clickRegister() {
+
+        const form = document.forms["register"]
+        const interest = []
+
+        for (let input of form.interest) {
+          if (input.checked) interest.push(input.value)
+        }
+
+        const data = {
+          userName: form.userName.value,
+          nickName: form.nickName.value,
+          gender: form.gender.value,
+          year: form.year.value,
+          month: form.month.value,
+          day: form.day.value,
+          interest: interest
+        }
+
+        axios({
+          method: "GET",
+          url: "/register",
+          params: data
+        }).then((res) => {
+          const {
+            username
+          } = res.data
+          document.querySelector(".register-result").innerHTML = `${data.userName}님 환영합니다.`
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mvcVer1</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h3> LOGIN </h3>
+
+    <form name="login">
+      <fieldset>
+        <legend>ID</legend>
+        <input type="text" name="userId" />
+      </fieldset>
+      <fieldset>
+        <legend>Password</legend>
+        <input type="password" name="userPw" />
+      </fieldset>
+      <br />
+
+      <button type="button" onclick="clickLogin()"> LOGIN </button>
+      <button type="button" onclick="location.href = '/join'"> JOIN </button>
+    </form>
+    <br />
+
+    <div class="login-result"></div>
+
+    <script>
+      function clickLogin() {
+        const form = document.forms["login"];
+        const data = {
+          userId: form.userId.value,
+          userPw: form.userPw.value
+        }
+
+        axios({
+          method: "POST",
+          url: "/index",
+          data: data
+        }).then((res) => {
+          const {
+            isSuccess,
+            msg
+          } = res.data
+          console.log(isSuccess)
+          const element = document.querySelector(".login-result");
+          element.innerHTML = msg;
+
+          const color = isSuccess ? "blue" : "red";
+          element.style.color = color
+        })
+      }
+    </script>
+  </body>
+</html>
