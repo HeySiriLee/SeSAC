@@ -9,13 +9,15 @@ exports.index = (req, res) => {
 
   let msg = "";
   for (let i = 0; i < userData.length; i++) {
-    if (req.body.userId != userData[i].userId) {
-      msg = "Wrong ID:(";
-    } else if (req.body.userPw != userData[i].userPw) {
-      msg = "Wrong Password:(";
+    if (req.body.userId == userData[i].userId) {
+      if (req.body.userPw == userData[i].userPw) {
+        msg = "Success Log in:)";
+        break;
+      } else {
+        msg = "Wrong Password:(";
+      }
     } else {
-      msg = "Success Log in:)";
-      break;
+      msg = "Wrong ID:(";
     }
   }
 
