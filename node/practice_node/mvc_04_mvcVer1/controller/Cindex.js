@@ -14,10 +14,13 @@ exports.index = (req, res) => {
     } else if (req.body.userPw != userData[i].userPw) {
       msg = "Wrong Password:(";
     } else {
-      msg = "Success sign up!";
+      msg = "Success Log in:)";
       break;
     }
   }
 
-  res.send({ isSuccess: msg === "Success sign up!", msg });
+  res.send({
+    isSuccess: msg === "Success Log in:)",
+    msg: `Success Log in, Welcome ${req.body.userId}!`,
+  });
 };
