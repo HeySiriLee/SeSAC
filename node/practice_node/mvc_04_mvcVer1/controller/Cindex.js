@@ -8,6 +8,7 @@ exports.index = (req, res) => {
   let userData = users();
   let idMatched = false;
   let pwMatched = false;
+  // "lily", '1234'
 
   for (let i = 0; i < userData.length; i++) {
     if (req.body.userId == userData[i].userId) {
@@ -23,10 +24,6 @@ exports.index = (req, res) => {
 
   if (idMatched && pwMatched) {
     msg = `Success Log in, Welcome ${req.body.userId}!`;
-  } else if (idMatched) {
-    msg = "Wrong Password:(";
-  } else if (pwMatched) {
-    msg = "Wrong ID:(";
   } else {
     msg = "Check your ID and Password:(";
   }
