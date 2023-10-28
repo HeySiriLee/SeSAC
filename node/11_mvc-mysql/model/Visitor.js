@@ -26,3 +26,31 @@ exports.getVisitors = (callback) => {
     callback(rows);
   });
 };
+
+exports.insertVisitor = (data, callback) => {
+  const sql = `INSERT INTO visitor (userName, comment) VALUES ('${data.userName}', '${data.comment}')`;
+
+  conn.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    callback(result.insertId);
+  });
+};
+
+exports.removeVisitor = (id, callback) => {
+  const sql = `DELETE FROM visitor WHERE id= ${id}`;
+
+  conn.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    let flag = false;
+    if (result.affectedRows) {
+      flag = true;
+    }
+    console.log("visitor delete: ", result);
+    callback(flag);
+  });
+};
