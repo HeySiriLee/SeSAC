@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>mvc-mysql</title>
+  </head>
+  <body>
+    <form name="form-visitor">
+      <fieldset>
+        <legend>방명록 등록</legend>
+        <input type="text" name="username" placeholder="NAME" />
+        <br />
+        <input type="text" name="comment" placeholder="방명록" />
+        <br />
+        <button type="button" onclick="addVisitor()">등록</button>
+      </fieldset>
+    </form>
+    <div>
+      <table border="1" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>작성자</th>
+            <th>방명록</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for (let i = 0; i < data.length; i++){ %>
+          <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].userName %></td>
+            <td><%= data[i].comment %></td>
+            <td><button type="button" onclick="">Edit</button></td>
+            <td><button typer="button" onclick="">Delete</button></td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+    </div>
+    
+    <script>
+      function addVisitor() {
+        // 서버에 보낼 데이터를 만들어야함
+        const form = document.forms["form-visitor"]
+        const data = {
+          userName: form.userName.value,
+          Comment: form.comment.value,
+        }
+        //axios를 이용해 데이터를 서버로 전송,
+        axiow({
+          mehtod: 'POST',
+          url:'/visitor',
+          data: data
+        })
+
+        //axios 응답을 받으면, 
+      }
+    </script>
+  </body>
+</html>
