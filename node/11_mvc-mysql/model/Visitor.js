@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 
 // createConnection : mysql 연결 정보를 받아서 mysql과 연결
-// connect DB > host, user, password. dbname,
+// db 연결한다 > host, user, password, database 이름
 const conn = mysql.createConnection({
   host: "localhost",
   user: "user",
@@ -11,35 +11,40 @@ const conn = mysql.createConnection({
 
 // exports.getVisitors = () => {
 //   return [
-//     { id: 1, userName: "홍길동", comment: "내가 왔다" },
-//     { id: 2, userName: "이찬혁", comment: "으라차차" },
+//     { id: 1, username: "홍길동", comment: "내가 왔다." },
+//     { id: 2, username: "이찬혁", comment: "으라차차" },
 //   ];
 // };
 
-exports.getVisitors = (callback) => {
+exports.getVisitors = (cb) => {
   conn.query(`SELECT * FROM visitor`, (err, rows) => {
-    // 변수 err 가 빈 값이 아니라면, err가 발생한 것
+    // err 변수가 빈 값이 아니라면, err가 발생했다는 것.
     if (err) {
       throw err;
     }
-    console.log("visitor: ", rows);
-    callback(rows);
+
+    console.log("visitor", rows);
+    cb(rows);
   });
 };
 
-exports.insertVisitor = (data, callback) => {
-  const sql = `INSERT INTO visitor (userName, comment) VALUES ('${data.userName}', '${data.comment}')`;
+exports.insertVisitor = (data, cb) => {
+  // insert into visitor (username, comment) values ('????', '?????')
+  const sql = `INSERT INTO visitor (username, comment) VALUES ('${data.username}', '${data.comment}')`;
 
   conn.query(sql, (err, result) => {
+    // err 변수가 빈 값이 아니라면, err가 발생했다는 것.
     if (err) {
       throw err;
     }
-    callback(result.insertId);
+
+    console.log("visitor insert", result);
+    cb(result.insertId);
   });
 };
 
-exports.removeVisitor = (id, callback) => {
-  const sql = `DELETE FROM visitor WHERE id= ${id}`;
+exports.delVisitor = (id, cb) => {
+  const sql = `delete from visitor where id = ${id}`;
 
   conn.query(sql, (err, result) => {
     if (err) {
@@ -50,7 +55,32 @@ exports.removeVisitor = (id, callback) => {
     if (result.affectedRows) {
       flag = true;
     }
-    console.log("visitor delete: ", result);
-    callback(flag);
+
+    console.log("visitor delete", result);
+    cb(flag);
+    // cb(true);
+  });
+};
+
+exports.getVisitorById = (id, cb) => {
+  conn.query(`SELECT * FROM visitor WHERE id=${id}`, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log("Visitor.js: ", rows);
+    cb(rows[0]);
+  });
+};
+
+exports.patchVisitor = (data, cb) => {
+  const sql = `UPDATE visitor SET username='${data.name}', comment='${data.comment}' WHERE id=${data.id}`;
+  conn.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log("Visitor.js: ", result);
+    cb(result);
   });
 };

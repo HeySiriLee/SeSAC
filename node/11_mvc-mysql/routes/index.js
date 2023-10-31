@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controller/Cvisitor");
 
+// ~~~~~:8000 -> index.ejs render
 router.get("/", controller.home);
 
+// ~~~~~:8000/visitor -> visitor.ejs render
 router.get("/visitors", controller.visitor);
 
 // 방명록 등록
