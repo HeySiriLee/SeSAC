@@ -75,29 +75,11 @@
             <td>${comment}</td>
             <td><button type="button" onclick="updateVisitor(${id})">Edit</button></td>
             <td><button type="button" onclick="deleteVisitor(${id})">Delete</button></td>
-          </tr>`)
+            </tr>`)
         })
 
       }
 
-
-      function deleteVisitor(id, TrElement) {
-        // id를 이용해서 url을 완성, 요청 보내기
-        axios({
-          method: 'DELETE',
-          url: `/visitor/${id}`
-        }).then((res) => {
-          console.log(res.data);
-
-          if (res.data.result) {
-            // 삭제할 td 태그가 필요함.
-            // $(TrElement).remove();
-            $(`#tr_${id}`).remove()
-          } else {
-            alert("존재하지 않는 방명록 입니다.")
-          }
-        })
-      }
 
       function updateVisitor(id) {
         axios({
@@ -115,9 +97,9 @@
 
           // [변경], [취소] 버튼 보이기
           $(".btn-group").html(`
-            <button type='button' onclick='editDo(${id});'>변경</button>
-            <button type='button' onclick='editCancel();'>취소</button>
-          `)
+              <button type='button' onclick='editDo(${id});'>Edit</button>
+              <button type='button' onclick='editCancel();'>Cancel</button>
+            `)
         });
       }
 
@@ -129,7 +111,7 @@
             url: '/visitor',
             data: {
               id: id,
-              name: form.username.value,
+              username: form.username.value,
               comment: form.comment.value,
             },
           })
@@ -155,6 +137,24 @@
 
         // (2) [등록] 버튼 보이기
         $(".btn-group").html(`<button type='button' onclick='addVisitor();'>Registration</button>`);
+      }
+
+      function deleteVisitor(id, TrElement) {
+        // id를 이용해서 url을 완성, 요청 보내기
+        axios({
+          method: 'DELETE',
+          url: `/visitor/${id}`
+        }).then((res) => {
+          console.log(res.data);
+
+          if (res.data.result) {
+            // 삭제할 td 태그가 필요함.
+            // $(TrElement).remove();
+            $(`#tr_${id}`).remove()
+          } else {
+            alert("존재하지 않는 방명록 입니다.")
+          }
+        })
       }
     </script>
   </body>
