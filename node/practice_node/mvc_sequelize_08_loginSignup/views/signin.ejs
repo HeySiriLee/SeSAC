@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>로그인</title>
+    <title>mvc-sequelize</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -31,13 +31,8 @@
           console.log(res.data)
           if (res.data.userid) {
             alert("로그인 성공");
-
             document.cookie = "user=" + res.data.userid;;
             console.log(document.cookie)
-
-            var form_info = document.forms["form-info"];
-            form_info.id.value = res.data.id;
-            // form_info.submit();
           } else {
             alert("로그인 실패");
             // form.reset();
@@ -50,7 +45,7 @@
     <div class="scene flex">
       <section class="card">
         <h1 class="card__heading">
-          <span> Welcome</span>
+          <span> SIGN IN </span>
         </h1>
         <form name="form-info" action="/user/profile" method="POST">
           <input type="hidden" name="id">
@@ -61,11 +56,14 @@
           <label for="password" class="visually">Password :</label>
           <input id="password" class="card__input" type="password" name="pw" required />
           <button class="card__button" type="button" onclick="login();">
-            <span>Login</span>
+            <span>Sign in</span>
           </button>
         </form>
 
-        <a href="/user/signup">Register</a>
+        <button class="card__button" onclick="location.href='/user/signup'">
+          <span>아이디업음가입하자</span>
+        </button>
+        <!-- <a href="/user/signup">Sign up</a> -->
       </section>
     </div>
   </body>
