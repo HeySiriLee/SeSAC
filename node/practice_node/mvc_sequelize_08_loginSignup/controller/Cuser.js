@@ -1,6 +1,7 @@
 const { User } = require("../model/Index");
 
 exports.index = (req, res) => {
+  console.log(req.headers.cookie);
   res.render("index");
 };
 
@@ -9,8 +10,8 @@ exports.signup = (req, res) => {
 };
 exports.postSignup = async (req, res) => {
   try {
-    const { id, name, pw } = req.body;
-    const createUser = await User.create({ id, name, pw });
+    const { userid, name, pw } = req.body;
+    const createUser = await User.create({ userid, name, pw });
     res.send(createUser);
   } catch (err) {
     console.error(err);
@@ -22,14 +23,13 @@ exports.signin = (req, res) => {
   res.render("signin");
 };
 exports.postSignin = async (req, res) => {
-  const { id, pw } = req.body;
-  const user = await User.findOne({ where: { id, pw } });
-
+  const { userid, pw } = req.body;
+  const user = await User.findOne({ where: { userid, pw } });
   if (user) {
-    req.session.user = user;
+    // req.cookie.user = user;
     res.send(user);
   } else {
-    res.status(401).send("Login Failed");
+    res.status(401).send({ msg: "Login Failed" });
   }
 };
 
@@ -37,17 +37,17 @@ exports.profile = async (req, res) => {
   const user = req.session.user;
 
   if (user) {
-    res.rende("profile", { data: user });
+    res.render("profile", { data: user });
   } else {
     res.redirect("/user/signin");
   }
 };
 
 exports.profileEdit = async (req, res) => {
-  const userId = req.params.id;
+  const id = req.params.id;
   const { name, pw } = req.body;
 
-  const result = await User.update({ name, pw }, { where: { id: userId } });
+  const result = await User.update({ name, pw }, { where: { id: id } });
 
   if (result[0] === 1) {
     res.send({ result: true });
@@ -57,9 +57,9 @@ exports.profileEdit = async (req, res) => {
 };
 
 exports.profileDelete = async (req, res) => {
-  const userId = req.params.id;
+  const id = req.params.id;
 
-  const result = await User.destroy({ where: { id: userId } });
+  const result = await User.destroy({ where: { id: id } });
 
   if (result === 1) {
     res.send({ result: true });
