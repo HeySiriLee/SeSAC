@@ -1,19 +1,20 @@
 const express = require("express");
 const app = express();
-const port = 8080;
+const PORT = 8080;
 
 app.set("view engine", "ejs");
+
 app.use("/static", express.static("static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const router = require("./routes");
-app.use("/user", router);
+app.use("/", router);
 
 app.get("*", (req, res) => {
   res.send("접근할 수 없는 주소입니다.");
 });
 
-app.listen(port, () => {
-  console.log("Server Port : ", port);
+app.listen(PORT, () => {
+  console.log(`Sever Open: ${PORT}`);
 });

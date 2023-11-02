@@ -4,14 +4,14 @@ const router = express.Router();
 
 router.get("/", user.index);
 
-router.get("/signup", user.signup);
-router.post("/signup", user.postSignup);
+router.get("/user/signup", user.signup);
+router.post("/user/signup", user.postSignup);
 
-router.get("/signin", user.signin);
-router.post("/signin", user.postSignin);
+router.get("/user/signin", user.signin);
+router.post("/user/signin", user.postSignin);
 
-router.get("/profile", user.profile);
-router.patch("/profile/edit/:id", user.profileEdit);
-router.delete("/profile/delete/:id", user.profileDelete);
+router.get("/user/profile", user.profile);
+router.patch("/user/profile/edit/:id", user.profileEdit);
+router.delete("/user/profile/delete/:id", user.profileDelete);
 
 module.exports = router;
