@@ -34,7 +34,10 @@ exports.postSignin = async (req, res) => {
 };
 
 exports.profile = async (req, res) => {
-  const user = req.session.user;
+  const id = req.headers.cookie.split("=")[1];
+  const user = await User.findOne({
+    where: { id: id },
+  });
 
   if (user) {
     res.render("profile", { data: user });
