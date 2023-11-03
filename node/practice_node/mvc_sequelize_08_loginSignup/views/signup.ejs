@@ -17,9 +17,15 @@
           return false;
         }
 
+        if (form.pw.value != form.checkpw.value) {
+          alert("비밀번호가 일치하지 ");
+          return false;
+        }
+
         let user = {
           userid: form.userid.value,
           pw: form.pw.value,
+          // checkpw: form.checkpw.value,
           name: form.name.value
         };
 
@@ -28,8 +34,12 @@
           url: '/user/signup',
           data: user
         }).then((res) => {
-          alert("회원가입 성공");
-          document.location.href = "/user/signin";
+          if (data.pw == data.checkpw) {
+            alert("회원가입 성공");
+            document.location.href = "/user/signin";
+          } else {
+            alert("회원가입 실패");
+          }
         });
       }
     </script>
@@ -45,6 +55,8 @@
           <div><input id="userid" class="card__input" type="text" name="userid" required /></div>
           <label for="password" class="visually">Password :</label>
           <input id="password" class="card__input" type="password" name="pw" required />
+          <label for="checkpassword" class="visually">Check Password :</label>
+          <input id="checkpassword" class="card__input" type="password" name="checkpw" required />
           <label for="nickname" class="visually">Name : </label>
           <input id="nickname" class="card__input" type="text" name="name" required />
           <button class="card__button" type="button" onclick="register();">
@@ -54,10 +66,6 @@
             <span>아이디잇음로그인하자;</span>
           </button>
         </form>
-
-        <!-- <button class="card__button" onclick="location.href='/user/signin'">
-          <span>아이디잇음로그인하자</span>
-        </button> -->
       </section>
     </div>
   </body>
