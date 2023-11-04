@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useCookie&Session</title>
+  </head>
+  <body>
+    <header></header>
+    <nav>
+      <ul>
+        <li><a href="http://localhost:8080">HomepageName</a></li>
+        <li>menu1</li>
+        <li>menu2</li>
+        <li style="text-align: right;"><button type="button" onclick=""></button></li>
+      </ul>
+    </nav>
+
+    <script>
+      function popup() {
+        var url = "/popup";
+        var name = "popup test";
+        var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+        window.open(url, name, option);
+      }
+
+      popup()
+    </script>
+  </body>
+</html>

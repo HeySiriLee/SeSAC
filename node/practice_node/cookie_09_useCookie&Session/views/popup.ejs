@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useCookie&Session</title>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <img src="https://postfiles.pstatic.net/20141231_260/noblesmt_1419994943589Nq1qi_JPEG/%BF%AC%B8%BB20141231-002.jpg?type=w2" />
+      <p style="font-weight: bold">인생무상</p>
+    </div>
+    <div style="text-align:right">
+      <label>
+        <input type="checkbox" id="popup" /> Stop showing today
+      </label>
+      <button id="closePopup" type="submit" onclick="closePopupButton()">Close</button>
+    </div>
+
+    <script>
+      const dontShowPopupCheckbox = document.getElementById("Popup");
+      const closePopupButton = document.getElementById("closePopup");
+
+      dontShowPopupCheckbox.addEventListener("change", () => {
+        if (dontShowPopupCheckbox.checked) {
+          fetch("/popup")
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+            });
+        }
+      });
+
+      closePopupButton.addEventListener("click", () => {
+        window.close();
+      });
+    </script>
+  </body>
+</html>
