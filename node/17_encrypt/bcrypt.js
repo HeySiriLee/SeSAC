@@ -11,5 +11,6 @@ function comparePw(password, dbPw) {
 }
 
 const dbPw = bcryptPw("1234");
+
 console.log("Password 1234: ", dbPw);
 console.log("Compare Password: ", comparePw("1234", dbPw));
