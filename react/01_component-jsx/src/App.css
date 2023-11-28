@@ -1,4 +1,13 @@
 /* BEM NAMMIMING 규칙 으로 참고! */
+.Section__section {
+  margin-bottom: 20px;
+  border: 2px solid skyblue;
+}
+
+.Section__title {
+  color: blue;
+}
+
 .test-css {
   background-color: greenyellow;
   font-size: 15px;
