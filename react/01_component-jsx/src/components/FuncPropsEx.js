@@ -48,7 +48,7 @@ import PropTypes from "prop-types";
 function FuncPropsEx({ title, content, number }) {
   return (
     <>
-      <div>Use the Functional Component ( Props )</div>
+      <div> Use the Functional Component ( Props ) </div>
       <div>
         Title: {title}, Content: {content}, Number: {number}
       </div>

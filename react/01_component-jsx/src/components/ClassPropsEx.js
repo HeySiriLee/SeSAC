@@ -5,7 +5,7 @@ class ClassPropsEx extends Component {
   render() {
     return (
       <>
-        <div>Use the Class Component ( Props )</div>
+        <div> Use the Class Component ( Props ) </div>
         <div>
           Title: {this.props.title}, Content: {this.props.content}, Number:{" "}
           {this.props.number}
@@ -15,7 +15,7 @@ class ClassPropsEx extends Component {
   }
 
   static defaultProps = {
-    name: "코딩온",
+    name: "CodingOn",
   };
 
   static propTypes = {
