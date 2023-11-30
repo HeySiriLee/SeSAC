@@ -20,7 +20,7 @@ class ClassState extends Component {
 
   render() {
     return (
-      <body style={{ marginLeft: "10px", marginTop: "10px" }}>
+      <>
         <h3>Classic Component State Study</h3>
         <div>
           Synchronous num1 state value {this.state.num1}{" "}
@@ -49,7 +49,7 @@ class ClassState extends Component {
             + 2
           </button>
         </div>
-      </body>
+      </>
     );
   }
 }

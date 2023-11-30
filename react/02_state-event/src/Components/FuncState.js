@@ -8,7 +8,7 @@ function FuncState() {
   const [text, setText] = useState("text");
 
   return (
-    <body style={{ marginLeft: "10px", marginTop: "10px" }}>
+    <>
       <h3>Functional Component State Study</h3>
       <div>
         Synchronous num1 state value {num1}{" "}
@@ -43,7 +43,7 @@ function FuncState() {
           Translate!
         </button>
       </div>
-    </body>
+    </>
   );
 }
 
