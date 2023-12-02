@@ -1,8 +1,8 @@
 import "./App.css";
-import ClassEvent from "./Components/ClassEvent";
-import ClassState from "./Components/ClassState";
-import FuncEvent from "./Components/FuncEvent";
-import FuncState from "./Components/FuncState";
+import ClassEvent from "./components/ClassEvent";
+import ClassState from "./components/ClassState";
+import FuncEvent from "./components/FuncEvent";
+import FuncState from "./components/FuncState";
 
 function App() {
   return (
