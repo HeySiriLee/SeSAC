@@ -33,6 +33,7 @@ function ListMap() {
   return (
     <>
       <label>추가할 SHOP: </label>
+      <br />
       <input
         type="text"
         value={newShop}
