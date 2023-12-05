@@ -1,0 +1,73 @@
+$color-main: black;
+
+.scss-parents {
+  color: $color-main;
+  width: 100% - 200;
+  background-color: lightgrey;
+}
+
+@mixin box-width($size) {
+  width: $size;
+  height: $size;
+}
+
+// style 코드 블록을 @mixin 키워드를 이용하여 함수처럼 하나로 묶어두고
+.box1 {
+  @include box-width(25px);
+  background-color: gold;
+}
+// 사용할 땐 @include 키워드를 이용하여 사용
+.box2 {
+  @include box-width(50px);
+  background-color: goldenrod;
+}
+
+.scss-parents {
+  ul {
+    background-color: grey;
+    color: white;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-important {
+  @extend .btn;
+  background-color: lightgrey;
+}
+
+.origin-sass {
+  display: flex;
+  .box {
+    @include box-width(100px);
+
+    &.red {
+      background-color: red;
+    }
+    &.orange {
+      background-color: orange;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.blue {
+      background-color: blue;
+    }
+    &.navy {
+      background-color: navy;
+    }
+    &.purple {
+      background-color: purple;
+    }
+  }
+}

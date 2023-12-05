@@ -6,11 +6,11 @@ function CssModule() {
       <div className={styles.origin}>
         <div className={`${styles.box} ${styles.red}`}></div>
         <div className={[styles.box, styles.orange].join(" ")}></div>
-        <div className="box yellow"></div>
-        <div className="box green"></div>
-        <div className="box blue"></div>
-        <div className="box navy"></div>
-        <div className="box purple"></div>
+        <div className={`${styles.box} ${styles.yellow}`}></div>
+        <div className={`${styles.box} ${styles.green}`}></div>
+        <div className={`${styles.box} ${styles.blue}`}></div>
+        <div className={`${styles.box} ${styles.navy}`}></div>
+        <div className={`${styles.box} ${styles.purple}`}></div>
       </div>
     </>
   );

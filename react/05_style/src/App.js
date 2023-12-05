@@ -1,6 +1,7 @@
 import "./App.css";
 import CssOrigin from "./components/CssOrigin";
 import CssModule from "./components/CssModule";
+import SassOrigin from "./components/SassOrigin";
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <CssOrigin />
       <br />
       <CssModule />
+      <br />
+      <SassOrigin />
     </div>
   );
 }
