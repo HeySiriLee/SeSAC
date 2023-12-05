@@ -32,12 +32,12 @@ print(nums5)
 
 
 
-#BOJ_1000_A+B
+## BOJ_1000_A+B
 nums = list(map(int, input().split()))
 answer = nums[0] + nums[1]
 print(answer)
 
-#SW_4828_minmax
+## SW_4828_minmax
 T = int(input('')) # 테스트 케이스 숫자
 
 for test_case in range(1, T+1):
