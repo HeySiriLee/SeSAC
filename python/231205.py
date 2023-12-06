@@ -1,27 +1,16 @@
 ## SW_4835_구간합
-for tc in range(1, int(input()) + 1):
+T = int(input())
+
+for tc in range(1, T + 1):
     N, M = map(int, input().split())
     nums = list(map(int, input().split()))
-
-    S = [0]
-    s = 0
-
-    for num in nums:
-        s += num
-        S.append(s)
-
-    prefix_sum = sum(nums[:M])
-
-    # 최초값 설정
-    min_num = 987654321
-    max_num = 0
-
-    for i in range(N - M):
-        prefix_sum += S[i + M] - S[i]
-        min_num = min(min_num, prefix_sum)
-        max_num = max(max_num, prefix_sum)
-
-    print(f'#{tc} {max_num - min_num}')
+    sums = []
+    for i in range(N-M+1):
+        target = nums[i:i+M]
+        if len(target) < M:
+            break
+        sums.append(sum(target))
+    print(f'#{tc} {max(sums) - min(sums)}')
 
 ## BOJ_1302_베스트셀러
 import sys
@@ -33,11 +22,9 @@ from collections import defaultdict
 books_sales_info = defaultdict(int)
 
 for _ in range(int(input())):
-    # 책이 팔릴 때마다 하나씩 카운팅
-    books_sales_info[input().rstrip()] += 1
+    books_sales_info[input().rstrip()] += 1 # 책이 팔릴 때마다 하나씩 카운팅
 
-# 책 제목만 뽑아서 사전순 정렬
-books_names = sorted(books_sales_info)
+books_names = sorted(books_sales_info) # 책 제목만 뽑아서 사전순 정렬
 
 cnt = -1
 ans = ''
@@ -51,8 +38,8 @@ print(ans)
 
 ## BOJ_2231_분해합
 N = int(input())
-# 생성자는 반드시 분해합보다 작은 숫자
-start = max(1, N - (9 * len(str(N))))
+
+start = max(1, N - (9 * len(str(N)))) # 생성자는 반드시 분해합보다 작은 숫자
 answer = 0
 
 for num in range(start, N + 1):
