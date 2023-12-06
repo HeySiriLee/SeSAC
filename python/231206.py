@@ -36,9 +36,9 @@ func(0)
 
 # 피보나치 수열
 def fibo(n):
-	if n < 2 :  # 1은 더 쪼개지지 않음
-		return n
-	else:
-		return fibo(n-1) + fibo(n-2)  # 재귀 호출
+    if n < 2 :  # 1은 더 쪼개지지 않음
+        return n
+    else:
+        return fibo(n-1) + fibo(n-2)  # 재귀 호출
 
 print(fibo(10)) # 55
