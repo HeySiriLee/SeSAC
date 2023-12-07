@@ -1,6 +1,6 @@
-import "../styles/larva.scss";
+import "../styles/larvaVerReact.scss";
 
-function Larva() {
+function LarvaVerReact() {
   return (
     <div className="larva">
       <div className="body head">
@@ -21,4 +21,4 @@ function Larva() {
   );
 }
 
-export default Larva;
+export default LarvaVerReact;
