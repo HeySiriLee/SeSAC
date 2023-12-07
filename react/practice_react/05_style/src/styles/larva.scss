@@ -1,0 +1,82 @@
+.larva {
+  position: relative;
+  div {
+    border-radius: 50%;
+  }
+  .body {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 100px;
+
+    &.head {
+      z-index: 1;
+      background-color: green;
+      position: absolute;
+
+      .eye1 {
+        z-index: 2;
+        position: absolute;
+        background-color: white;
+        width: 15px;
+        height: 15px;
+        top: 10px;
+        left: 10px;
+      }
+
+      .eye2 {
+        z-index: 3;
+        background-color: black;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        top: 17px;
+        left: 12px;
+      }
+    }
+
+    &.head {
+      z-index: 4;
+      background-color: rgb(61, 176, 107);
+      top: 10px;
+      left: 10px;
+    }
+
+    &.body1 {
+      z-index: 5;
+      background-color: rgb(27, 144, 74);
+      top: 35px;
+      left: 30px;
+    }
+
+    &.body2 {
+      z-index: 6;
+      background-color: rgb(53, 196, 110);
+      top: 50px;
+      left: 50px;
+    }
+
+    &.body3 {
+      z-index: 7;
+      background-color: rgb(53, 183, 105);
+      top: 60px;
+      left: 80px;
+    }
+
+    &.tail {
+      z-index: 8;
+      background-color: rgb(28, 158, 80);
+      top: 60px;
+      left: 120px;
+    }
+  }
+  .grass {
+    z-index: 999;
+    position: absolute;
+    top: 150px;
+    left: 95px;
+    width: 210px;
+    height: 100px;
+  }
+}
