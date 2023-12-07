@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 
 // useMemo: Rendering 할 때, 불필요한 연산을 방지(값을 기억함)
 export default function UseMemoEx() {
