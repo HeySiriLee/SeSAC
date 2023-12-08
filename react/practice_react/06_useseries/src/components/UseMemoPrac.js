@@ -1,7 +1,7 @@
 // src/component/Hello.js 파일에 아래의 코드를 작성해주세요.
 import { useMemo, useState } from "react";
 
-export default function UseMemo() {
+export default function UseMemoPrac() {
   const [text, setText] = useState("");
   const [searchWord, setSearchWord] = useState("");
 
