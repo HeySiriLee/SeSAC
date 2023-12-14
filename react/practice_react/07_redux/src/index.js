@@ -8,12 +8,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "./index.css";
 import App from "./App";
 
-import rootReducer from "./store";
+import rootReducer from "./modules";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
+const modules = configureStore({ reducer: rootReducer }, composeWithDevTools());
 
 root.render(
-  <Provider store={store}>
+  <Provider store={modules}>
     <App />
   </Provider>
 );

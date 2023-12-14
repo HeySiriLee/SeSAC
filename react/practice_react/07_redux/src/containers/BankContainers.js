@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Bank from "../components/Bank";
-import { deposit, withdraw } from "../store/bankReducer";
+import { deposit, withdraw } from "../modules/bankReducer";
 
 export const BankContainer = () => {
   const money = useSelector((state) => state.money);
