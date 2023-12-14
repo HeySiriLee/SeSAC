@@ -32,5 +32,4 @@ enum Weather2 {
   cloud = "cloud",
   wind = "wind",
 }
-
 console.log(Weather2.wind);
