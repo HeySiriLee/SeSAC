@@ -5,11 +5,21 @@ import { useEffect, useState } from "react";
 const socket = io.connect("http://localhost:3001");
 
 function App() {
+  // Room State
+  const [room, setRoom] = useState("");
+
+  // Message State
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
 
+  const joinRoom = () => {
+    if (room !== "") {
+      socket.emit("join_room", room);
+    }
+  };
+
   const sendMessage = () => {
-    socket.emit("send_message", { message });
+    socket.emit("send_message", { message, room });
   };
 
   useEffect(() => {
@@ -21,14 +31,24 @@ function App() {
   return (
     <div className="App">
       <input
-        placeholder="Message.."
-        onChange={(e) => {
-          setMessage(e.target.value);
+        placeholder="What's the Room Number?"
+        onChange={(event) => {
+          setRoom(event.target.value);
         }}
       />
+      &nbsp;
+      <button onClick={joinRoom}> Join Room</button>
+      <br />
+      <input
+        placeholder="Enter the Message!"
+        onChange={(event) => {
+          setMessage(event.target.value);
+        }}
+      />
+      &nbsp;
       <button onClick={sendMessage}> Send Message </button>
-      <h1> Message: </h1>
-      {messageReceived}
+      <br />
+      <p> Message: {messageReceived}</p>
     </div>
   );
 }
