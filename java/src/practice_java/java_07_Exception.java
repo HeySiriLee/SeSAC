@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.IllformedLocaleException;
 import java.util.Scanner;
 
-public class java_07_exception {
+public class java_07_Exception {
     public static void main(String[] args) {
         // Practice 1.
         int[] arr1 = new int[4];
